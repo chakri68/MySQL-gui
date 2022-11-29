@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySQL GUI</title>
+    <link rel="shortcut icon" href="./db.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="add-row-form" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <p class="title">Add New Row</p>
+          <!-- Your content -->
+          <div class="content"></div>
+          <button class="button is-primary" onclick="handleAddRow(event)">
+            Save
+          </button>
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    <main class="m-6">
+      <div
+        class="header my-5"
+        style="
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 500px;
+          text-align: center;
+        "
+      >
+        <h1 class="title">MySQL dashboard</h1>
+        <h2 class="subtitle">
+          Enter data into the database using the form below
+        </h2>
+      </div>
+      <div
+        id="connection-form"
+        style="max-width: 420px; margin: auto; text-align: center"
+      >
+        <!-- <label class="label mb-3" for="connection-string">
+          Connection String
+        </label>
+        <input
+          class="input mb-4"
+          id="connection-string"
+          type="text"
+          placeholder="connection string"
+          value="localhost"
+        />
+        <label class="label mb-3" for="connection-string"> Username </label>
+        <input
+          class="input mb-4"
+          id="username"
+          type="text"
+          placeholder="username"
+          value="root"
+        />
+        <label class="label mb-3" for="connection-string"> Password </label>
+        <input
+          class="input mb-4"
+          id="password"
+          type="password"
+          placeholder="password"
+        /> -->
+        <a class="button is-primary" onclick="handleConnect(event)"
+          >Connect to database</a
+        >
+      </div>
+      <div
+        id="form-div"
+        class="my-3"
+        style="display: none; margin: auto; max-width: 500px; min-width: 300px"
+      >
+        <div
+          class="field is-grouped is-justify-content-space-between"
+          style="gap: 50px; align-items: center"
+        >
+          <p class="control">
+            <label class="label" style="display: inline-block"
+              >Table Name</label
+            >
+            <span class="select" style="width: 100%">
+              <select
+                id="table-select"
+                style="width: 100%"
+                onchange="handleTableSelection(event)"
+              ></select>
+            </span>
+          </p>
+          <button class="button js-modal-trigger" data-target="add-row-form">
+            <span class="icon is-small">
+              <i class="fa-solid fa-plus"></i>
+            </span>
+          </button>
+          <button
+            id="row-delete-btn"
+            class="button is-danger"
+            onclick="handleRowDelete(event)"
+            disabled
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      <div
+        id="tables"
+        style="display: none; margin: auto; max-width: 500px"
+      ></div>
+    </main>
+    <script src="./index.js" ></script>
+  </body>
+</html>
