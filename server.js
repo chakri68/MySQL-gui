@@ -12,7 +12,7 @@ const backendConfig = require("./backendConfig");
 app.use(cors());
 app.use(express.json());
 
-const { database } = backendConfig.database;
+const { database } = backendConfig;
 const port = backendConfig?.port || 3000;
 
 const con = mysql.createConnection({
