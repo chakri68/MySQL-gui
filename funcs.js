@@ -1,9 +1,6 @@
-let primaryKeys = {
-  department: "Dnumber",
-  employee: "SSN",
-  project: "Pnumber",
-  works_on: "ESSN",
-};
+const backendConfig = require("./backendConfig");
+
+const primaryKeys = backendConfig.primaryKeys;
 
 function getTableNames(req, res, con) {
   try {

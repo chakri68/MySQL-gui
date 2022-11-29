@@ -1,3 +1,7 @@
+import frontendConfig from "../../frontendConfig";
+
+const serverURL = frontendConfig.serverURL || "http://localhost:3000";
+
 let selectedRow = null;
 
 let tables = {};
@@ -14,7 +18,7 @@ console.log(rowFormContent);
 let rowDeleteBtn = document.getElementById("row-delete-btn");
 
 async function fetchTable(tableName) {
-  let res = await fetch("http://localhost:3000/tableData", {
+  let res = await fetch(`${serverURL}/tableData`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -30,7 +34,7 @@ async function fetchTable(tableName) {
 }
 
 async function fetchTables() {
-  let res = await fetch("http://localhost:3000/tables");
+  let res = await fetch(`${serverURL}/tables`);
   let { success, data } = await res.json();
   console.log(data);
   data = data;
@@ -61,7 +65,7 @@ async function handleAddRow(e) {
   e.target.classList.toggle("is-loading");
   let { table, data } = await collectRowData();
   // Send a post request ded
-  let res = await fetch("http://localhost:3000/addRow", {
+  let res = await fetch(`${serverURL}/addRow`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -108,7 +112,7 @@ async function handleRowDelete(e) {
   let table = tablesDiv.dataset.tableName;
   e.target.classList.toggle("is-loading");
   let data = getRowJson(selectedRow.innerHTML, Object.keys(tables[table][0]));
-  let res = await fetch("http://localhost:3000/deleterow", {
+  let res = await fetch(`${serverURL}/deleteRow`, {
     method: "POST",
     headers: {
       Accept: "application/json",
