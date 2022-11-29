@@ -2,7 +2,7 @@
   "scripts": {
     "frontend": "cd ./frontend/public && http-server",
     "backend": "node server.js",
-    "start": "node server.js & npm run frontend"
+    "start": "concurrently \"npm run frontend\" \"npm run backend\""
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -11,6 +11,7 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "prettier": "2.8.0"
   }
 }
